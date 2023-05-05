@@ -21,6 +21,9 @@ Dataset created via DataPreProcessing.ipynb below using Cornell University's [co
 **DataPreProcessing**
 This script ingests the MartinQuinnScores and SCDB base files and pulls in the convokit package. The output is a pair of dataframes of Conversations (argument text) data and Utterances (speaker text) data. Two folders containing the actual transcript text for later ingestion are also created. 
 
+**SimpleModels**
+Runs various logistic regression, decision tree, and random forest models on our Conversations dataframe.
+
 **BertTrial**
 Runs our base trial with semi-tuned hyperparameters. Requires access to base files -- hardcoded paths must be updated in the script. 
 
