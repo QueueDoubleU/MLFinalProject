@@ -2,10 +2,10 @@
 Final Project work for INFO-251 Spring 2023
 
 
-For folders containing conversation transcripts, utterance transcripts, and the base conversations dataframe (Outcomes_NoTranscripts.csv), see our shared [Google Drive here](https://colab.research.google.com/drive/1NrvHUrMtmp9z0uby6j_zXXz5as4gNy4s?usp=share_link). Note that you must access with an @berkeley.edu email address. 
+For folders containing conversation transcripts, utterance transcripts, and the base conversations dataframe (Outcomes_NoTranscripts.csv), see our shared [Google Drive here](https://colab.research.google.com/drive/1NrvHUrMtmp9z0uby6j_zXXz5as4gNy4s?usp=share_link). Note that you must access with an @berkeley.edu email address, or request access from quinn_wilson@berkeley.edu
 
 
-## Base Files
+## Base Data Files
 
 **MartinQuinnScores.csv**
 Contains information on the median Martin-Quinn Score for each Supreme Court term. The range for scores is -8 to 4 with 4 being the most conservative justice in the Supreme Court’s history and -8 being the most liberal. Dates from 1937 to 2021. 
@@ -24,11 +24,16 @@ This script ingests the MartinQuinnScores and SCDB base files and pulls in the c
 **SimpleModels**
 Runs various logistic regression, decision tree, and random forest models on our Conversations dataframe.
 
-**BertTrial**
+**BertTrial** ***DEPRECATED***
 Runs our base trial with semi-tuned hyperparameters. Requires access to base files -- hardcoded paths must be updated in the script. 
 
-**BigBirdTrial** 
+**BigBirdTrial** ***DEPRECATED***
 Runs initial passes using the BigBird model. Likely requires access to cloud computing services. We run using Google Colab standard GPU accelerator. 
 
-**DeBERTa_model**
+**DeBERTa_model** ***DEPRECATED***
 Runs final DeBERTa model on conversation text. With default sequence parameters (mean 3000 tokens, std dev 250) and 3000 conversations, cloud computing services required. Ongoing updates to this model include embedding MartinQuinn data and wrapping speaker information per utterance to garner more variability among transcripts and avoid overfitting. We recommend running larger portions of data using Google Colab premium GPUs if available. 
+
+**SCOTUS_Argument_Analysis_Mode__Workng**
+Latest jupyter notebook for advanced tokenization and embeddings using legal-bert-uncased, or other LLMs as loaded by script. Allows for dynamic analysis of Conversations or Utterances depending on set flags. 
+Latter portion of notebook performs an optimized XGBoost Classifier on numerical and categorical features. The intention is to perform an XGBoost with extracted features from the preceding text analysis. 
+  **NOTE** This currently ***does not run*** in Google Colab. The likely issue is a mishaped tensor following the word embeddings. However, it may also be a memory issue. This file MUST be run using an A100 GPU or better/comparale. 
